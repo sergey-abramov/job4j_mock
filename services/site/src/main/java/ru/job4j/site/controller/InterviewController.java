@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.job4j.site.domain.StatusInterview;
 import ru.job4j.site.dto.InterviewDTO;
+import ru.job4j.site.dto.SubmitterDTO;
 import ru.job4j.site.dto.UserInfoDTO;
 import ru.job4j.site.service.AuthService;
 import ru.job4j.site.service.InterviewService;
@@ -55,7 +56,7 @@ public class InterviewController {
         var token = getToken(req);
         if (token != null) {
             var userInfo = authService.userInfo(token);
-            interviewDTO.setSubmitterId(userInfo.getId());
+            interviewDTO.setSubmitter(new SubmitterDTO(userInfo.getUsername()));
         }
         interviewDTO.setTopicId(topicId);
         InterviewDTO createInterview = interviewService.create(getToken(req), interviewDTO);
@@ -113,7 +114,7 @@ public class InterviewController {
         try {
             userInfoDTO = authService.userInfo(token);
             interview = interviewService.getById(token, interviewId);
-            if (interview.getSubmitterId() != userInfoDTO.getId()) {
+            if (interview.getSubmitter().getId() != userInfoDTO.getId()) {
                 return "redirect:/interview/" + interviewId;
             }
         } catch (Exception e) {
@@ -158,7 +159,7 @@ public class InterviewController {
         var userInfoDTO = authService.userInfo(token);
         var interview = interviewService.getById(token, interviewId);
         var result = "interview/participate";
-        if (userInfoDTO != null && interview.getSubmitterId() != userInfoDTO.getId()) {
+        if (userInfoDTO != null && interview.getSubmitter().getId() != userInfoDTO.getId()) {
             var wishers = wisherService.getAllWisherDtoByInterviewId(token, String.valueOf(interview.getId()));
             var statisticMap = wisherService.getInterviewStatistic(wishers);
             model.addAttribute("interview", interview);

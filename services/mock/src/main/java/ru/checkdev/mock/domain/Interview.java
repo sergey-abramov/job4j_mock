@@ -27,8 +27,9 @@ public class Interview {
     @Column(name = "status")
     private int status;
 
+    @ManyToOne
     @JoinColumn(name = "submitter_id")
-    private int submitterId;
+    private Submitter submitter;
 
     @NotBlank(message = "Title must be not empty")
     @JoinColumn(name = "title")
