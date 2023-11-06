@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.checkdev.mock.MockSrv;
 import ru.checkdev.mock.domain.Interview;
+import ru.checkdev.mock.domain.Submitter;
 import ru.checkdev.mock.domain.Wisher;
 import ru.checkdev.mock.dto.WisherDto;
 import ru.checkdev.mock.service.WisherService;
@@ -42,7 +43,7 @@ class WishersControllerTest {
     private Interview interview = Interview.of()
             .id(1)
             .mode(2)
-            .submitterId(3)
+            .submitter(new Submitter())
             .title("test_title")
             .additional("test_additional")
             .contactBy("test_contact_by")

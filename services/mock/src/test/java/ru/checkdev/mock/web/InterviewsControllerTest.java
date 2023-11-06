@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.checkdev.mock.MockSrv;
 import ru.checkdev.mock.domain.Interview;
+import ru.checkdev.mock.domain.Submitter;
 import ru.checkdev.mock.repository.InterviewRepository;
 import ru.checkdev.mock.service.InterviewService;
 
@@ -47,7 +48,7 @@ class InterviewsControllerTest {
     private Interview interview = Interview.of()
             .id(1)
             .mode(2)
-            .submitterId(3)
+            .submitter(new Submitter())
             .title("test_title")
             .additional("test_additional")
             .contactBy("test_contact_by")
@@ -79,7 +80,7 @@ class InterviewsControllerTest {
             var interview = Interview.of()
                     .id(i)
                     .mode(2)
-                    .submitterId(3)
+                    .submitter(new Submitter())
                     .title(String.format("interview_%d", i))
                     .additional("test_additional")
                     .contactBy("test_contact_by")
