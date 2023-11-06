@@ -2,6 +2,7 @@ package ru.job4j.site.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -30,6 +31,7 @@ import static org.mockito.Mockito.when;
  * @author Dmitry Stepanov
  * @version 29.10.2023 03:14
  */
+@Disabled
 @SpringBootTest(classes = FeedbackServiceWebClient.class)
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)

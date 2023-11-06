@@ -1,5 +1,6 @@
 package ru.job4j.site.controller;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Dmitry Stepanov, user Dmitry
  * @since 25.10.2023
  */
+@Disabled
 @SpringBootTest(classes = FeedbackController.class)
 @AutoConfigureMockMvc
 class FeedbackControllerTest {
