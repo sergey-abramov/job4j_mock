@@ -43,7 +43,7 @@ class InterviewServiceTest {
         var user = new UserInfoDTO();
         user.setId(1);
         var interview = new InterviewDTO();
-        interview.setSubmitterId(55);
+        interview.setSubmitter(new SubmitterDTO());
         var actual = interviewService.isAuthor(user, interview);
         assertThat(actual).isFalse();
     }

@@ -14,6 +14,7 @@ import ru.job4j.site.SiteSrv;
 import ru.job4j.site.domain.Breadcrumb;
 import ru.job4j.site.dto.CategoryDTO;
 import ru.job4j.site.dto.InterviewDTO;
+import ru.job4j.site.dto.SubmitterDTO;
 import ru.job4j.site.dto.TopicDTO;
 import ru.job4j.site.service.*;
 
@@ -79,10 +80,10 @@ class IndexControllerTest {
         var cat1 = new CategoryDTO(1, "name1");
         var cat2 = new CategoryDTO(2, "name2");
         var listCat = List.of(cat1, cat2);
-        var firstInterview = new InterviewDTO(1, 1, 1, 1,
+        var firstInterview = new InterviewDTO(1, 1, 1, new SubmitterDTO(),
                 "interview1", "description1", "contact1",
                 "30.02.2024", "09.10.2023", 1);
-        var secondInterview = new InterviewDTO(2, 1, 1, 2,
+        var secondInterview = new InterviewDTO(2, 1, 1, new SubmitterDTO(),
                 "interview2", "description2", "contact2",
                 "30.02.2024", "09.10.2023", 1);
         var listInterviews = List.of(firstInterview, secondInterview);

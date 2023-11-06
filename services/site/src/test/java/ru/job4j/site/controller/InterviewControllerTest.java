@@ -153,7 +153,7 @@ public class InterviewControllerTest {
         var interview = new InterviewDTO();
         interview.setId(1);
         interview.setTitle("title");
-        interview.setSubmitterId(userInfo.getId());
+        interview.setSubmitter(new SubmitterDTO());
         interview.setTopicId(1);
         var breadcrumbs = List.of(
                 new Breadcrumb("Главная", "/index"),
@@ -180,7 +180,7 @@ public class InterviewControllerTest {
         userInfo.setUsername("name");
         var interview = new InterviewDTO();
         interview.setId(1);
-        interview.setSubmitterId(22);
+        interview.setSubmitter(new SubmitterDTO());
         interview.setTopicId(1);
         when(authService.userInfo(token)).thenReturn(userInfo);
         when(interviewService.getById(token, interview.getId())).thenReturn(interview);
@@ -201,7 +201,7 @@ public class InterviewControllerTest {
         userInfo.setUsername("name");
         var interview = new InterviewDTO();
         interview.setId(1);
-        interview.setSubmitterId(userInfo.getId());
+        interview.setSubmitter(new SubmitterDTO());
         interview.setTopicId(1);
         when(authService.userInfo(token)).thenReturn(userInfo);
         when(interviewService.getById(token, interview.getId())).thenThrow(JsonProcessingException.class);
@@ -220,12 +220,12 @@ public class InterviewControllerTest {
         userInfo.setId(99);
         var interview = new InterviewDTO();
         interview.setId(1);
-        interview.setSubmitterId(userInfo.getId());
+        interview.setSubmitter(new SubmitterDTO());
         interview.setTopicId(1);
         mockMvc.perform(post("/interview/update")
                         .sessionAttr("token", token)
                         .param("id", String.valueOf(interview.getId()))
-                        .param("submitterId", String.valueOf(interview.getSubmitterId()))
+                        .param("submitterId", String.valueOf(interview.getSubmitter()))
                 )
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
@@ -239,12 +239,12 @@ public class InterviewControllerTest {
         userInfo.setId(99);
         var interview = new InterviewDTO();
         interview.setId(1);
-        interview.setSubmitterId(userInfo.getId());
+        interview.setSubmitter(new SubmitterDTO());
         doThrow(JsonProcessingException.class).when(interviewService).update(token, interview);
         mockMvc.perform(post("/interview/update")
                         .sessionAttr("token", token)
                         .param("id", String.valueOf(interview.getId()))
-                        .param("submitterId", String.valueOf(interview.getSubmitterId()))
+                        .param("submitterId", String.valueOf(interview.getSubmitter()))
                 )
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
@@ -260,7 +260,7 @@ public class InterviewControllerTest {
         var interviewId = 7;
         var interview = new InterviewDTO();
         interview.setId(interviewId);
-        interview.setSubmitterId(14375842);
+        interview.setSubmitter(new SubmitterDTO());
         interview.setTitle("Some title");
         var wishers = IntStream.range(1, 3).mapToObj(i -> {
                     var wisher = new WisherDto();
@@ -303,7 +303,7 @@ public class InterviewControllerTest {
         var interviewId = 7;
         var interview = new InterviewDTO();
         interview.setId(interviewId);
-        interview.setSubmitterId(userInfo.getId());
+        interview.setSubmitter(new SubmitterDTO());
         when(interviewService.getById(token, interviewId)).thenReturn(interview);
         mockMvc.perform(get(String.format("/interview/%d/participate", interviewId))
                 )

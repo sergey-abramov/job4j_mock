@@ -61,7 +61,7 @@ public class InterviewsControllerTest {
             interview.setId(i);
             interview.setMode(1);
             interview.setStatus(1);
-            interview.setSubmitterId(1);
+            interview.setSubmitter(new SubmitterDTO());
             interview.setTitle(String.format("Interview_%d", i));
             interview.setAdditional("Some text");
             interview.setContactBy("Some contact");
