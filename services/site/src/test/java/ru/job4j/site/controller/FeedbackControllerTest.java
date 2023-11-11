@@ -29,7 +29,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author Dmitry Stepanov, user Dmitry
  * @since 25.10.2023
  */
-@Disabled
 @SpringBootTest(classes = FeedbackController.class)
 @AutoConfigureMockMvc
 class FeedbackControllerTest {

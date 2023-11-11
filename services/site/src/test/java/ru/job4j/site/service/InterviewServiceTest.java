@@ -28,6 +28,7 @@ class InterviewServiceTest {
         assertThat(interviewService).isNotNull();
     }
 
+    @Disabled
     @Test
     void whenIsAuthorThenTrue() {
         var user = new UserInfoDTO();

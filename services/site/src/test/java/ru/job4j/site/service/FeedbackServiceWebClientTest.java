@@ -32,7 +32,6 @@ import static org.mockito.Mockito.when;
  * @author Dmitry Stepanov
  * @version 29.10.2023 03:14
  */
-@Disabled
 @SpringBootTest(classes = FeedbackServiceWebClient.class)
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)

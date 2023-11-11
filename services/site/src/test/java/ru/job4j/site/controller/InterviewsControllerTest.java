@@ -22,7 +22,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@Disabled
 @SpringBootTest(classes = SiteSrv.class)
 @AutoConfigureMockMvc
 public class InterviewsControllerTest {
@@ -45,6 +44,7 @@ public class InterviewsControllerTest {
     @MockBean
     private TopicsService topicsService;
 
+    @Disabled
     @Test
     public void whenShowAllInterviews() throws Exception {
         var token = "1410";

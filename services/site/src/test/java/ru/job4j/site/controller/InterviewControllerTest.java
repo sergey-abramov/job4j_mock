@@ -30,7 +30,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@Disabled
 @SpringBootTest(classes = SiteSrv.class)
 @AutoConfigureMockMvc
 public class InterviewControllerTest {
@@ -46,6 +45,7 @@ public class InterviewControllerTest {
     @MockBean
     private WisherService wisherService;
 
+    @Disabled
     @Test
     public void whenShowDetails() throws Exception {
         var breadcrumbs = List.of(
@@ -143,6 +143,7 @@ public class InterviewControllerTest {
                 .andExpect(view().name("redirect:/interview/" + interview.getId()));
     }
 
+    @Disabled
     @Test
     void wenGetEditViewThenReturnEditView() throws Exception {
         var token = "123456";
@@ -232,6 +233,7 @@ public class InterviewControllerTest {
                 .andExpect(view().name("redirect:/interview/" + interview.getId()));
     }
 
+    @Disabled
     @Test
     void whenPostUpdateInterviewThrowsThenRedirectEditInterview() throws Exception {
         var token = "123456";
@@ -239,7 +241,7 @@ public class InterviewControllerTest {
         userInfo.setId(99);
         var interview = new InterviewDTO();
         interview.setId(1);
-        interview.setSubmitter(new SubmitterDTO());
+        interview.setSubmitter(new SubmitterDTO(""));
         doThrow(JsonProcessingException.class).when(interviewService).update(token, interview);
         mockMvc.perform(post("/interview/update")
                         .sessionAttr("token", token)
